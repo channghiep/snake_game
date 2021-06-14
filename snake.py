@@ -59,6 +59,14 @@ class Snake:
             self.blocks[block_num].goto(new_x, new_y)
         self.blocks[0].forward(MOVE_DISTANCE)
 
+
+    def reset(self):
+        for block in self.blocks:
+            block.goto(1000,1000)
+        self.blocks.clear()
+        self.create_snake()
+        self.head = self.blocks[0]
+
     def snake_up(self):
         if self.head.heading() != DOWN:
             self.head.setheading(UP)

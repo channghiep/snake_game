@@ -13,10 +13,10 @@ food = Food()
 scoreboard = Scoreboard()
 
 screen.listen()
-screen.onkey(snake.snake_up, "Up")
-screen.onkey(snake.snake_down, "Down")
-screen.onkey(snake.snake_left, "Left")
-screen.onkey(snake.snake_right, "Right")
+screen.onkey(snake.snake_up, "w")
+screen.onkey(snake.snake_down, "s")
+screen.onkey(snake.snake_left, "a")
+screen.onkey(snake.snake_right, "d")
 
 game_on = True
 
@@ -33,8 +33,15 @@ while game_on:
 
     #Detect collision
     if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280:
-        game_on = False
-        scoreboard.game_over()
+
+        # scoreboard.game_over()
+        # for block in range(0,len(snake.blocks)):
+        #     snake.blocks[block].goto(1000,1000)
+        # game_on = False
+        scoreboard.reset()
+        snake.reset()
+
+        # snake = Snake( )
 
     #Detect collision with tail
     for block in snake.blocks[1:]:
